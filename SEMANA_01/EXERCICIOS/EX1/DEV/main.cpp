@@ -3,6 +3,11 @@
 
 // 1 -  Faça uma função que recebe uma certa medida e ajusta ela percentualmente 
 // entre dois valores mínimo e máximo e retorna esse valor
+int main(){
+	float valor_min;
+	float valor_max;
+	
+}
 
 // 2 - Faça uma função que simule a leitura de um sensor lendo o 
 // valor do teclado ao final a função retorna este valor
@@ -21,7 +26,17 @@
 // A função deve retornar duas informações: A primeira é a direção 
 // de maior distância ("Direita", "Esquerda", "Frente", "Tras") e a 
 // segunda é esta maior distância.
+int posicao(){
+	int vetor[] = {0, 0, 0, 0};
+	int direita, esquerda, frente, tras;
 
+	printf("Digite a distância do lado direito:");
+	cin >> direita;
+	vetor[0]= direita;
+	vetor[1]= esquerda;
+	vetor[2] = frente;
+	vetor[3] = tras;
+	}
 
 
 
