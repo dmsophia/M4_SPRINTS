@@ -1,5 +1,6 @@
+//incluir componente dos botões e bibliotecas no tabuleiro
 import React, { Component } from 'react';
-import Square from './square';
+import Square from './square'; 
 
 export default class Board extends Component {
     renderSquare(i){
@@ -10,6 +11,7 @@ export default class Board extends Component {
     render() {
         return (
             <div>
+                //As divs abaixo, com parâmetros numéricos, irão servir para calcular o ganhador do jogo da velha
                 <div className="border-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}

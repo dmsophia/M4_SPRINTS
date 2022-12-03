@@ -5,11 +5,14 @@ import axios from 'axios'
 export default class Game extends Component {
     constructor(props) {
         super(props);
+        /*Estabalece os estados iniciais (default) do jogo, sendo o jogador X o primeiro a jogar, 
+        os passos, etapas do jogo, que se iniciam em 0 e o histórico, para saber quem é o próximo jogador*/
         this.state = {
             xIsNext: true,
             stepNumber: 0,
             history: [
-                { squares: Array(9).fill(null) }
+                { squares: Array(9).fill(null) } /*O histórico é um array de 9 'passos' que são nulos no começo, 
+                pois nenhum jogador jogou ainda*/
             ]
         }
     }
@@ -19,12 +22,14 @@ export default class Game extends Component {
             xIsNext: (step%2)===0
         })
     }
-
+/* A função abaixo define o conceito core do jogo da velha, definindo o histórico, a jogada mais recente (current) 
+salva no histórico e o comando de quem é o próximo jogador (X ou O)*/
     handleClick(i) {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
         const winner = calculateWinner(squares);
+        //Aqui não deixa o próximo jogador mudar o valor de um quadrado caso já esteja preenchido
         if (winner || squares[i]) {
             return;
         }
@@ -40,6 +45,7 @@ export default class Game extends Component {
     }
 
     render() {
+        //Definindo as constantes do histórico, que controla as jogadas
         const history = this.state.history;
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
@@ -56,6 +62,9 @@ export default class Game extends Component {
         let status;
         if (winner) {
             status = 'Winner is ' + winner;
+            /*Para fazer com que o led vermelho ligue quando o jogador X ganhar, usamos a 
+            biblioteca axios para enviar a informação ao ESP pelo seu IP e rota estabelecidos,
+             a mesma coisa é feita com o Y*/
             if (winner == "X"){
                 axios.get("http://10.128.65.199:80/x")
             }
@@ -82,7 +91,7 @@ export default class Game extends Component {
         )
     }
 }
-
+// Função que calcula quem ganhou o jogo e retorna o vencedor, ou empate
 function calculateWinner(squares) {
     const lines = [
         [0, 1, 2],
