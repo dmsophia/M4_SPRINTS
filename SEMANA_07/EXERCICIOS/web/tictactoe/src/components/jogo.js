@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Board from './tabuleiro';
+import axios from 'axios'
 
 export default class Game extends Component {
     constructor(props) {
@@ -55,7 +56,12 @@ export default class Game extends Component {
         let status;
         if (winner) {
             status = 'Winner is ' + winner;
-            
+            if (winner == "X"){
+                axios.get("http://10.128.65.199:80/x")
+            }
+            if (winner == "O"){
+                axios.get("http://10.128.65.199:80/o")
+            }
         } else {
             status = 'Next Player is ' + (this.state.xIsNext ? 'X' : 'O');
         }
