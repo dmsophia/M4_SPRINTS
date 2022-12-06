@@ -66,10 +66,10 @@ salva no histórico e o comando de quem é o próximo jogador (X ou O)*/
             biblioteca axios para enviar a informação ao ESP pelo seu IP e rota estabelecidos,
              a mesma coisa é feita com o Y*/
             if (winner == "X"){
-                axios.get("http://10.128.65.199:80/x")
+                axios.get("http://10.128.65.188/x")
             }
             if (winner == "O"){
-                axios.get("http://10.128.65.199:80/o")
+                axios.get("http://10.128.65.188:80/o")
             }
         } else {
             status = 'Next Player is ' + (this.state.xIsNext ? 'X' : 'O');

@@ -8,10 +8,11 @@ export default class Board extends Component {
         onClick={()=>this.props.onClick(i)}
         />
     }
+    /*As divs abaixo, com parâmetros numéricos, 
+    irão servir para calcular o ganhador do jogo da velha*/
     render() {
         return (
             <div>
-                //As divs abaixo, com parâmetros numéricos, irão servir para calcular o ganhador do jogo da velha
                 <div className="border-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
